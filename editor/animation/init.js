@@ -133,9 +133,6 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 $content.find('.answer').remove();
             }
 
-            var canvas = new RotateNumber($content.find(".explanation")[0]);
-            canvas.draw(rightResult);
-
 
             this_e.setAnimationHeight($content.height() + 60);
 
@@ -154,45 +151,6 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 //                this_e.sendToConsoleCheckiO("something");
 //            });
 //        });
-        function RotateNumber(dom) {
-
-            var colorOrange4 = "#F0801A";
-            var colorOrange3 = "#FA8F00";
-            var colorOrange2 = "#FAA600";
-            var colorOrange1 = "#FABA00";
-
-            var colorBlue4 = "#294270";
-            var colorBlue3 = "#006CA9";
-            var colorBlue2 = "#65A1CF";
-            var colorBlue1 = "#8FC7ED";
-
-            var colorGrey4 = "#737370";
-            var colorGrey3 = "#9D9E9E";
-            var colorGrey2 = "#C5C6C6";
-            var colorGrey1 = "#EBEDED";
-
-            var colorWhite = "#FFFFFF";
-            var sizeX = 300;
-            var sizeY = 50;
-
-            var paper = Raphael(dom, sizeX, sizeY);
-            var attrText = {"stroke": colorBlue4, "font-size": sizeY * 0.6, "font-family": "Roboto, Verdana, sans-serif"};
-
-            this.draw = function(number) {
-                var t = paper.text(sizeX / 2, sizeY / 2, number).attr(attrText);
-                var s = 1;
-                var k = 0.15;
-                var step = 100;
-                (function rotate(){
-                    s -= k;
-                    if (s <= -1 || s >= 1) {
-                        k = -k;
-                    }
-                    t.animate({"transform": "s" + s + ",1"}, step, callback=rotate);
-                })();
-            }
-        }
-
 
 //Your Additional functions or objects inside scope
 //
