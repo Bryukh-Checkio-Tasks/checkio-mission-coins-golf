@@ -28,8 +28,47 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
         });
 
         ext.set_animate_success_slide(function (this_e, options) {
-            var $h = $(this_e.setHtmlSlide('<div class="animation-success"><div></div></div>'));
-            this_e.setAnimationHeight(115);
+            var ends = ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"];
+
+            options = options || {};
+            var is_new_record = options.is_new_record || false;
+            var place_rating = String(options.place_rating || 0);
+            var best_points = options.best_points || 0;
+            var current_points = options.current_points || 0;
+            var $div = $("<div></div>");
+            var $h = $(this_e.setHtmlSlide('<div class="animation-success"><div class="result"></div></div>'));
+            var $resultDiv = $h.find(".result");
+            var $table = $("<table></table>").addClass("numbers");
+            if (is_new_record) {
+                $resultDiv.addClass("win-sign");
+                $resultDiv.append($("<div></div>").text("You beat your best results!"));
+                var $tr = $("<tr></tr>");
+                $tr.append($("<th></th>").text(best_points));
+                $tr.append($("<th></th>").text(place_rating).append($("<span></span>").addClass(".ends").text(ends[Number(place_rating[place_rating.length - 1])])));
+
+                $table.append($tr);
+                $tr = $("<tr></tr>");
+                $tr.append($("<td></td>").text("Personal best"));
+                $tr.append($("<td></td>").text("Place"));
+                $table.append($tr);
+            }
+            else {
+                $resultDiv.addClass("norm-sign");
+                $resultDiv.append($("<div></div>").text("Your results"));
+                $tr = $("<tr></tr>");
+                $tr.append($("<th></th>").text(current_points));
+                $tr.append($("<th></th>").text(best_points));
+                $tr.append($("<th></th>").text(place_rating).append($("<span></span>").addClass(".ends").text(ends[Number(place_rating[place_rating.length - 1])])));
+
+                $table.append($tr);
+                $tr = $("<tr></tr>");
+                $tr.append($("<td></td>").text("Points"));
+                $tr.append($("<td></td>").text("Personal best"));
+                $tr.append($("<td></td>").text("Place"));
+                $table.append($tr);
+            }
+            $resultDiv.append($table);
+            this_e.setAnimationHeight(255);
         });
 
         ext.set_animate_slide(function (this_e, data, options) {
@@ -40,17 +79,20 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             }
 
             //YOUR FUNCTION NAME
-            var fname = 'checkio';
+            var fname = 'golf';
 
-            var checkioInput = data.in;
-            var checkioInputStr = ' ' + fname + '(' + JSON.stringify(checkioInput)  + ')';
+            var checkioInput = data.in || [1, 2, 3, 4, 5];
+            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput) + ')';
+            var isCall = true;
 
-            var failError = function(dError) {
-                $content.find('.call').html('Fail: ' + checkioInputStr);
+            var failError = function (dError) {
+                if (isCall) {
+                    $content.find('.call').html('Fail: ' + checkioInputStr);
+                    $content.find('.call').addClass('error');
+                }
+
                 $content.find('.output').html(dError.replace(/\n/g, ","));
-
                 $content.find('.output').addClass('error');
-                $content.find('.call').addClass('error');
                 $content.find('.answer').remove();
                 $content.find('.explanation').remove();
                 this_e.setAnimationHeight($content.height() + 60);
@@ -63,6 +105,8 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
             if (data.ext && data.ext.inspector_fail) {
                 failError(data.ext.inspector_result_addon);
+                $content.find('.call').remove();
+                isCall = false;
                 return false;
             }
 
@@ -89,13 +133,8 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 $content.find('.answer').remove();
             }
 
-            //Your code here about test explanation animation
-            //$content.find(".explanation").html("Something text for example");
-            //
-            //
-            //
-            //
-            //
+            var canvas = new RotateNumber($content.find(".explanation")[0]);
+            canvas.draw(rightResult);
 
 
             this_e.setAnimationHeight($content.height() + 60);
@@ -115,28 +154,52 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 //                this_e.sendToConsoleCheckiO("something");
 //            });
 //        });
+        function RotateNumber(dom) {
 
-        var colorOrange4 = "#F0801A";
-        var colorOrange3 = "#FA8F00";
-        var colorOrange2 = "#FAA600";
-        var colorOrange1 = "#FABA00";
+            var colorOrange4 = "#F0801A";
+            var colorOrange3 = "#FA8F00";
+            var colorOrange2 = "#FAA600";
+            var colorOrange1 = "#FABA00";
 
-        var colorBlue4 = "#294270";
-        var colorBlue3 = "#006CA9";
-        var colorBlue2 = "#65A1CF";
-        var colorBlue1 = "#8FC7ED";
+            var colorBlue4 = "#294270";
+            var colorBlue3 = "#006CA9";
+            var colorBlue2 = "#65A1CF";
+            var colorBlue1 = "#8FC7ED";
 
-        var colorGrey4 = "#737370";
-        var colorGrey3 = "#9D9E9E";
-        var colorGrey2 = "#C5C6C6";
-        var colorGrey1 = "#EBEDED";
+            var colorGrey4 = "#737370";
+            var colorGrey3 = "#9D9E9E";
+            var colorGrey2 = "#C5C6C6";
+            var colorGrey1 = "#EBEDED";
 
-        var colorWhite = "#FFFFFF";
-        //Your Additional functions or objects inside scope
-        //
-        //
-        //
+            var colorWhite = "#FFFFFF";
+            var sizeX = 300;
+            var sizeY = 50;
+
+            var paper = Raphael(dom, sizeX, sizeY);
+            var attrText = {"stroke": colorBlue4, "font-size": sizeY * 0.6, "font-family": "Roboto, Verdana, sans-serif"};
+
+            this.draw = function(number) {
+                var t = paper.text(sizeX / 2, sizeY / 2, number).attr(attrText);
+                var s = 1;
+                var k = 0.15;
+                var step = 100;
+                (function rotate(){
+                    s -= k;
+                    if (s <= -1 || s >= 1) {
+                        k = -k;
+                    }
+                    t.animate({"transform": "s" + s + ",1"}, step, callback=rotate);
+                })();
+            }
+        }
+
+
+//Your Additional functions or objects inside scope
+//
+//
+//
 
 
     }
-);
+)
+;
