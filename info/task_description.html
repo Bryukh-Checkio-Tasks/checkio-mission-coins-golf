@@ -1,44 +1,52 @@
 <p>
-    <i>( Describe task in general )</i>
+    Nicola trains his mind with anything at hands. He had several coins and thought up the mind game with them.
 </p>
 
 <p>
-    Sum two passed ints
-</p>
-
-<p style="text-align: center;">
-    <img class="for_info_only" title="example" src="{{MEDIA}}example.png" alt="example" width="392px"/>
-    <img class="for_editor_only" title="example" src="{{MEDIA}}example.png" alt="example" width="380px"/>
-</p>
-
-<p><i>( Explain input and output values )</i></p>
-<p>
-    <strong>Input: </strong> Two arguments. Both are int
+    You are given several coins. Each coin has value from 1 to 9.
+    Write a function that gets a list of coins as its input and calculates the smallest amount of money
+    that cannot be paid exactly using these coins (excepting zero).
 </p>
 
 <p>
-    <strong>Output: </strong> Int. 
+    We have one more rule for this challenge.
+    This is a <strong>code golf mission</strong> and your main goal is to make your code as short as possible.
+    The shorter your code, the more points you earn.
+    Your score for this mission is dynamic and directly related to the length of your code.
+    For reference, scoring is based on the number of characters used.
+    <strong>250 characters</strong> is the maximum allowable and it will earn you zero points.
+    For each character less than 250, you earn 1 point. For example for 200 character long code earns you 50 points.
+</p>
+
+<p>
+    <strong>Input: </strong> Coin values as a list with integers.
+</p>
+
+<p>
+    <strong>Output: </strong> The smallest amount of money that cannot be paid exactly using these coins as an integer.
 </p>
 
 
 
 <div class="for_info_only">
-    <p><i>( Put some usage examples )</i></p>
     <p>
         <strong>Example:</strong>
     </p>
     <pre class="brush: python">
-checkio(3, 2) == 5
-checkio(5, 7) == 12
+golf([10, 2, 2, 1]) == 6
+golf([1, 1, 1, 1]) == 5
+golf([1, 2, 3, 4, 5]) == 16
     </pre>
 </div>
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    <i>(Here you can explain how it can be used in development and what is usage of this.)</i>
+    This is a classical combinatorial problem. You can use it's like a mind game.
+    Or program your snack machine.
 </p>
 
 <p>
-    <strong>Precondition:</strong>
-    <i>Constraints for Input</i>
+    <strong>Precondition:</strong><br>
+    0 &lt; len(<strong>coins</strong>) &le; 10<br>
+    all(0 &lt; c &lt; 10 for c in <strong>coins</strong>)
 </p>
