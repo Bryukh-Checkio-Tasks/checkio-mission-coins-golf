@@ -8,7 +8,7 @@ from tests import TESTS
 api.add_listener(
     ON_CONNECT,
     CheckioRefereeGolf(
-        max_length=350,
+        max_length=300,
         tests=TESTS,
         function_name="golf"
     ).on_ready)

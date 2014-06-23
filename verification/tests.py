@@ -7,30 +7,72 @@ Each test is dict with
     "explanation" -- not necessary key, it's using for additional info in animation.
 """
 
-
 TESTS = {
     "Basics": [
         {
-            "input": [3, 2],
-            "answer": 5,
-            "explanation": "3+2=?"
+            "input": [10, 2, 2, 1],
+            "answer": 6,
         },
         {
-            "input": [5, 7],
-            "answer": 12,
-            "explanation": "5+7=?"
-        }
+            "input": [1, 1, 1, 1],
+            "answer": 5,
+        },
+        {
+            "input": [1, 2, 3, 4, 5],
+            "answer": 16,
+        },
+    ],
+    "Edge": [
+        {
+            "input": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            "answer": 11,
+        },
+
+        {
+            "input": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            "answer": 46,
+        },
+
+        {
+            "input": [9, 8, 7, 6, 5, 4, 3, 2, 1],
+            "answer": 46,
+        },
+        {
+            "input": [6, 8, 9, 5, 9, 5, 7, 1, 2, 3],
+            "answer": 56,
+        },
+        {
+            "input": [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+            "answer": 1,
+        },
+        {
+            "input": [1],
+            "answer": 2,
+        },
     ],
     "Extra": [
+{
+            "input": [1, 6, 4, 7, 1, 2, 1],
+            "answer": 23,
+        },
+
         {
-            "input": [6, 3],
-            "answer": 9,
-            "explanation": "6+3=?"
+            "input": [8, 1, 1, 4, 4, 2, 1, 5, 4, 6],
+            "answer": 37,
         },
         {
-            "input": [6, 7],
-            "answer": 13,
-            "explanation": "6+7=?"
-        }
+            "input": [4, 7, 1, 2, 6, 3],
+            "answer": 24,
+        },
+
+        {
+            "input": [9, 6, 4, 8, 1, 3, 1],
+            "answer": 33,
+        },
+
+        {
+            "input": [4, 9, 5, 1, 8, 2, 7, 2, 6, 4],
+            "answer": 49,
+        },
     ]
 }
