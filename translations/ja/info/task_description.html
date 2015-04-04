@@ -1,0 +1,80 @@
+<p>
+  ニコラは彼の手が届く範囲のもので精神を鍛錬します。
+  彼は仕事机にいくつかのコインを見つけて、それらを使ったマインドゲームを思いつきました。
+</p>
+<!-- <p>
+    Nicola trains his mind with anything within reach of his hands.
+    He found several coins on his work-desk and came up with a mind game involving them.
+</p> -->
+
+<p>
+  あなたはいくつかのコインが与えられます。
+  それぞれのコインは1から9の価値があります。
+  あなたは入力としてコインのリストを受け取って、それらを使って支払うことのできない最も少ない
+  <strong>正確な</strong>額(0を除く)を計算する関数を書かなくてはいけません。
+</p>
+<!-- <p>
+    You are given several coins.
+    Each coin has value from 1 to 9.
+    You must write a function that gets a list of the coins as their inputs and
+    calculate the smallest amount of money that cannot be paid for with <strong>exact</strong> change (excepting zero).
+</p> -->
+
+<p>
+  私たちはこのチャレンジに対してもう一つのルールを課します:
+  これは <strong>コードゴルフミッション</strong>であなたの主なゴールはあなたのコードを出来る限り短くすることです。
+  コードを短くすればより多くのポイントを獲得することができます。
+  あなたのスコアは動的でコードの長さに直接関連しています。
+  参考までにスコアは使われた文字の数に基づいています。
+  <strong>300 文字</strong>が許容される最大文字数でこの時は0点です。
+  300文字から1文字減るごとに1ポイント獲得することができます。
+  例えば200文字の長さのコードでは100ポイント獲得することになります。
+</p>
+<!-- <p>
+    We have one more rule for this challenge:
+    this is a <strong>code golf mission</strong> and your main goal is to make your code as short as possible.
+    The shorter your code, the more points you earn.
+    Your score for this mission is dynamic and directly related to the length of your code.
+    For reference, scoring is based on the number of characters used.
+    <strong>300 characters</strong> is the maximum allowable and it will earn you zero points.
+    For each character less than 300, you earn 1 point. For example, for 200 character long code earns you 100 points.
+</p> -->
+
+<p>
+    <strong>入力</strong> 整数のリストとしてコインの価値が与えられます。
+</p>
+
+<p>
+    <strong>出力</strong> これらのコインを使って支払うことのできない最も小さい額を整数として出力します。
+</p>
+
+
+
+<div class="for_info_only">
+    <p>
+        <strong>例</strong>
+    </p>
+    <pre class="brush: python">
+golf([9, 2, 2, 1]) == 6
+golf([1, 1, 1, 1]) == 5
+golf([1, 2, 3, 4, 5]) == 16
+    </pre>
+</div>
+
+<p class="for_info_only">
+    <strong>例</strong>
+    これは古典的な組み合わせ問題です。
+    趣味のマインドゲームとして使ったり、スナックマシーンをプログラムするのに使うことができます。
+</p>
+<!-- <p class="for_info_only">
+    <strong>How it is used: </strong>
+    This is a classical combinatorial problem.
+    You can use it’s mind game for fun, or to program your snack machine.
+
+</p> -->
+
+<p>
+    <strong>事前条件</strong><br>
+    0 &lt; len(<strong>coins</strong>) &le; 10<br>
+    all(0 &lt; c &lt; 10 for c in <strong>coins</strong>)
+</p>
