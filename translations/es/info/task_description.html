@@ -1,0 +1,58 @@
+<p>
+    Nicola entrena su mente con cualquier cosa al alcance de sus manos. De hecho,
+    hace poco encontr&oacute; varias monedas en su mesa de trabajo, y termino dise&ntilde;ando
+    un juego mental que las utiliza.
+</p>
+
+<p>
+  Se te dar&aacute;n varias monedas, que tienen un valor de 1 a 9. Deber&aacute;s escribir una
+  funci&oacute;n que bas&aacute;ndose en una lista de las monedas calcula la cantidad m&aacute;s peque&ntilde;a
+  de dinero que <strong>NO</strong> puede ser pagada <strong>exactamente</strong> con ellas, (excluyendo el cero).
+</p>
+
+<p>
+  Tenemos una regla m&aacute;s para este desaf&iacute;o:
+  esta es una <strong>misi&oacute;n tipo golf</strong> y tu objetivo principal ser&aacute; hacer
+  tu c&oacute;digo lo m&aacute;s corto posible. Cuanto m&aacute;s corto sea el c&oacute;digo, m&aacute;s puntos
+  obtendr&aacute;s. Tu puntaje para esta misi&oacute;n es din&aacute;mico y est&aacute; directamente relacionado
+  con la longitud de su c&oacute;digo. Como referencia, la puntuaci&oacute;n se basa en el n&uacute;mero
+  de caracteres utilizados.
+    <strong>300 caracteres </strong> son el m&aacute;ximo permitido, y con ellos
+    lograras cero puntos. Para cada car&aacute;cter que reduzcas, ganar&aacute;s 1 punto. Por ejemplo,
+    con un c&oacute;digo de 200 caracteres ganar&iacute;as 100 puntos.
+</p>
+
+<p>
+    <strong>Datos de Entrada: </strong> Un conjunto de monedas, como una lista
+    de enteros (<em>int</em>).
+</p>
+
+<p>
+    <strong>Salida: </strong> la cantidad m&aacute;s peque&ntilde;a
+    de dinero que <strong>NO</strong> puede ser pagada exactamente usando dichas monedas,
+    como un entero (<em>int</em>).
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>Ejemplo:</strong>
+    </p>
+    <pre class="brush: python">
+golf([9, 2, 2, 1]) == 6
+golf([1, 1, 1, 1]) == 5
+golf([1, 2, 3, 4, 5]) == 16
+    </pre>
+</div>
+
+<p class="for_info_only">
+    <strong>&iquest;C&oacute;mo se utiliza?:</strong>
+    Este es un problema cl&aacute;sico de combinaciones. Podr&iacute;as utilizarlo por diversi&oacute;n,
+    o para programar tu m&aacute;quina de snacks.
+</p>
+
+<p>
+    <strong>Condiciones:</strong><br>
+    0 &lt; len(<strong>coins</strong>) &le; 10<br>
+    all(0 &lt; c &lt; 10 for c in <strong>coins</strong>)
+</p>
